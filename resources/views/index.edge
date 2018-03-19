@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Team Upload</title>
+  {{ css('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css') }}
+  {{ css('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600') }}
+  {{ css('style') }}
+</head>
+<body>
+
+  <form action="/upload" method="POST" class="form" enctype="multipart/form-data">
+    <div class="alert {{ old('error', error) ? 'alert-error' : '' }} {{ old('success', success) ? 'alert-success' : '' }}">
+      <p>{{ old('error', error) || old('success', success) }}</p>
+    </div>
+
+    <div>
+      <label>Picture Preview (200x200)</label>
+      @if(old('src', false))
+        <div class="profile-picture-preview" style="background-image: url('{{ old('src') }}');">
+        </div>
+      @else
+        <div class="profile-picture-preview">
+        </div>
+      @endif
+    </div>
+
+    <div>
+      <label for="member_select">Select Member</label>
+      <select name="member" id="member_select">
+        @each(member in members)
+          <option value="{{ member }}">{{ upperFirst(member) }}</option>
+        @endeach
+      </select>
+    </div>
+
+    <div>
+      <label for="member_picture">Upload Profile Picture</label>
+      <input type="file" name="member_picture" id="member_picture">
+    </div>
+
+    <button type="submit" id="upload_button">Upload</button>
+
+    {{ csrfField() }}
+  </form>
+
+  {{ script('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}
+  {{ script('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js') }}
+  {{ script('main') }}
+</body>
+</html>

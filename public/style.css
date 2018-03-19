@@ -1,0 +1,121 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: #222222;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.alert {
+  color: #fff;
+  font-size: 0.8em;
+  box-sizing: border-box;
+  padding: 6px 12px;
+  border-radius: 4px;
+  visibility: hidden;
+}
+
+.alert > p {
+  margin: 0;
+  padding: 0;
+}
+
+.alert.alert-success {
+  background-color: #34A853;
+  visibility: visible;
+}
+
+.alert.alert-error {
+  background-color: #B22222;
+  visibility: visible;
+}
+
+.alert.alert-success::before {
+  content: 'Success!';
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.alert.alert-error::before {
+  content: 'Oh no!';
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.profile-picture-preview {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  position: relative;
+  margin-top: 25px;
+  text-align: center;
+
+  background-size: cover;
+  background-position: center center;
+}
+
+.profile-picture-preview > img {
+  height: 100%;
+  width: 100%;
+}
+
+.profile-picture-preview::after {
+  content: 'No Preview Available';
+  color: #ababab;
+  font-size: 0.5em;
+  background: #333;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: -1;
+}
+
+.form > div {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form > div > label {
+  color: #ababab;
+  text-transform: uppercase;
+}
+
+.form #member_picture {
+  color: #ababab;
+}
+
+.form > #upload_button {
+  background-color: #34A853;
+  outline: none;
+  border: none;
+  color: #fff;
+  height: 45px;
+  line-height: 45px;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 200ms;
+}
+
+.form > #upload_button:hover {
+  opacity: 1;
+}
